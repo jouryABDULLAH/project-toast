@@ -11,7 +11,8 @@ function ToastPlayground() {
 
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
-
+  const [isVisible, setIsVisible] = React.useState(false); // Toas visibility 
+  
   return (
     <div className={styles.wrapper}>
       <header>
@@ -20,7 +21,7 @@ function ToastPlayground() {
       </header>
 
       {/* Place a <Toast /> here! */}
-      <Toast variant={variant} message={message}/>
+      <Toast variant={variant} message={message} isVisible={isVisible} setIsVisible={setIsVisible}/>
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
@@ -76,7 +77,7 @@ function ToastPlayground() {
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
             <Button onClick={()=>{
-              window.alert(`${variant}, ${message}`)
+              setIsVisible(true);
             }}>Pop Toast!</Button>
           </div>
         </div>
