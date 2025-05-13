@@ -18,23 +18,24 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({variant='notice', children, isVisible, setIsVisible}) {
+function Toast({variant='notice', children, handleDismiss}) {
  
 
-  const className = isVisible ? `${styles.toast} ${styles[variant]}` : '';
+  // const className = isVisible ? `${styles.toast} ${styles[variant]}` : '';
 
-  // const inlineStyles = !isVisible ? { visibility: 'hidden', pointerEvents: 'none' } : {};
-  const inlineStyles = !isVisible ? { display: 'none', pointerEvents: 'none' } : {};
+  const className = `${styles.toast} ${styles[variant]}`;
+
+  // const inlineStyles = !isVisible ? { display: 'none', pointerEvents: 'none' } : {};
   const Icon = ICONS_BY_VARIANT[variant].render;
   return (
-    <div className={className} style={inlineStyles}>
+    <div className={className} >
       <div className={styles.iconContainer}>
         <Icon size={24} />
       </div>
       <p className={styles.content}>
         {children}
       </p>
-      <button className={styles.closeButton} onClick={()=>{setIsVisible(false)}}>
+      <button className={styles.closeButton} onClick={handleDismiss}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
