@@ -20,8 +20,9 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {/* Place a <Toast /> here! */}
-      <Toast variant={variant} message={message} isVisible={isVisible} setIsVisible={setIsVisible}/>
+      <Toast variant={variant} isVisible={isVisible} setIsVisible={setIsVisible}>
+      {message}
+      </Toast>
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>

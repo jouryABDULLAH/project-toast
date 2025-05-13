@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import {
   AlertOctagon,
   AlertTriangle,
@@ -18,7 +18,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({variant='notice', message='', isVisible, setIsVisible}) {
+function Toast({variant='notice', children, isVisible, setIsVisible}) {
  
 
   const className = isVisible ? `${styles.toast} ${styles[variant]}` : '';
@@ -32,7 +32,7 @@ function Toast({variant='notice', message='', isVisible, setIsVisible}) {
         <Icon size={24} />
       </div>
       <p className={styles.content}>
-        {message}
+        {children}
       </p>
       <button className={styles.closeButton} onClick={()=>{setIsVisible(false)}}>
         <X size={24} />
