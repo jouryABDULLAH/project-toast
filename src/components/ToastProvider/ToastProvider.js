@@ -6,7 +6,7 @@ export const ToastContext = React.createContext();
 function ToastProvider({children}) {
 
   const [toastList, setToastList] = React.useState([]);
-
+  
   function createToast(message, variant){
     const nextToast = {
       id: crypto.randomUUID(),
