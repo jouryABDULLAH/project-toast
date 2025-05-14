@@ -23,7 +23,6 @@ function ToastShelf({toastList, setToastList}) {
                   setToastList(nextToastList);
                 }}>
                   {toast.children}
-                  {`${toast.id}, ${toast.variant},${toast.children}`}
                 </Toast>
             </li>
           );
