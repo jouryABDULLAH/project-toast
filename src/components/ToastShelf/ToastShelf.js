@@ -2,8 +2,12 @@ import React from 'react';
 
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
+import { ToastContext } from '../ToastProvider'
 
-function ToastShelf({toastList, handleDismiss}) {
+function ToastShelf() {
+  const {
+    toastList,
+  } = React.useContext(ToastContext);
 
   
 
@@ -16,8 +20,8 @@ function ToastShelf({toastList, handleDismiss}) {
                 <Toast 
                   id={toast.id} 
                   variant={toast.variant} 
-                  handleDismiss={handleDismiss}>
-                  {toast.children}
+                >
+                    {toast.children}
                 </Toast>
             </li>
           );
