@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../Button';
 
 import styles from './ToastPlayground.module.css';
-import Toast from '../Toast/Toast';
+
 import ToastShelf from '../ToastShelf';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
@@ -25,13 +25,21 @@ function ToastPlayground() {
     
   }
 
+  function handleDismiss(id){
+    const nextToastList = toastList.filter((toast)=> { 
+      return toast.id != id;
+    });
+
+    setToastList(nextToastList);
+  }
+
   return (
     <div className={styles.wrapper}>
       <header>
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
-      <ToastShelf toastList={toastList} setToastList={setToastList}/>
+      <ToastShelf toastList={toastList} handleDismiss={handleDismiss}/>
 
 
       <form

@@ -3,7 +3,7 @@ import React from 'react';
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
 
-function ToastShelf({toastList, setToastList}) {
+function ToastShelf({toastList, handleDismiss}) {
 
   
 
@@ -13,15 +13,10 @@ function ToastShelf({toastList, setToastList}) {
       {toastList.map((toast)=>{
           return (
             <li key={toast.id} className={styles.toastWrapper}>
-                <Toast variant={toast.variant} handleDismiss={() => {
-                  const nextToastList = [...toastList];
-                  const idToRemove = toast.id;
-                  const index = nextToastList.findIndex(obj => obj.id === idToRemove);
-                  if (index !== -1) {
-                    nextToastList.splice(index, 1);
-                  }
-                  setToastList(nextToastList);
-                }}>
+                <Toast 
+                  id={toast.id} 
+                  variant={toast.variant} 
+                  handleDismiss={handleDismiss}>
                   {toast.children}
                 </Toast>
             </li>
